@@ -1,0 +1,30 @@
+{extend name="base" /} {block name="body"}
+<div class="layui-body">
+    <!--tab标签-->
+    <div class="layui-tab layui-tab-brief">
+        <ul class="layui-tab-title">
+            <li class="layui-this">快速入口</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <table class="layui-table">
+                    <colgroup>
+                        <col width="50">
+                        <col width="50">
+                        <col width="50">
+                    </colgroup>
+                    <tr>
+                        <td>系统配置</td>
+                        <td>
+                            <a class="layui-btn" href="{:url('admin/AdminUser/index')}" >用户管理</a>
+                            <a class="layui-btn" href="{:url('admin/AuthGroup/index')}" >权限管理</a>
+                            <a class="layui-btn" href="{:url('admin/Menu/index')}" >菜单管理</a>
+                        </td>
+                    </tr>
+                    <tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
