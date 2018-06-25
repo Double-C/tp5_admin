@@ -47,16 +47,16 @@ class Login extends Controller
         // 实例化表单验证器验证数据
         $validate = new \app\admin\validate\Login();
         if (!$validate->check($data)) {
-            return errorJson($validate->getError());
+            return error_json($validate->getError());
         }
         $query = $user->whereOr('username', $data['username'])
             ->whereOr('phone', $data['username'])
             ->find();
         if (!$query) {
-            return errorJson('用户不存在');
+            return error_json('用户不存在');
         }
-        if (getPassword($data['password']) != $query['password']) {
-            return errorJson('密码错误');
+        if (get_password($data['password']) != $query['password']) {
+            return error_json('密码错误');
         }
         Session::set('admin_id', $query['id']);
         Session::set('admin_name', $query['username']);
@@ -65,7 +65,7 @@ class Login extends Controller
         $query->last_login_ip = $this->request->ip();
         $query->save();
 
-        return publicJson('登录成功', url('admin/index/index'));
+        return public_json('登录成功', url('admin/index/index'));
     }
 
     /**

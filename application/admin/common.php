@@ -72,37 +72,6 @@ function array_child_append($parent, $pid, $child, $child_key_name)
 }
 
 /**
- * ajax通用模板
- * @param $message
- * @param null $url
- * @return \think\response\Json
- */
-function errorJson($message, $url = null)
-{
-    return json([
-        'code'    => 500,
-        'message' => $message,
-        'url'     => $url
-    ]);
-}
-
-/**
- * @param $message
- * @param null $url
- * @param array $data
- * @return \think\response\Json
- */
-function publicJson($message, $url = null, $data = [])
-{
-    return json([
-        'code'    => 200,
-        'message' => $message,
-        'url'     => $url,
-        'data'    => $data
-    ]);
-}
-
-/**
  * 数组层级缩进转换
  * @param array $array 源数组
  * @param int   $pid
@@ -123,7 +92,44 @@ function array2level($array, $pid = 0, $level = 1)
     return $list;
 }
 
-function getPassword($password)
+/**
+ * ajax错误返回
+ * @param $message
+ * @param null $url
+ * @return \think\response\Json
+ */
+function error_json($message, $url = null)
+{
+    return json([
+        'code'    => 500,
+        'message' => $message,
+        'url'     => $url
+    ]);
+}
+
+/**
+ * ajax通用返回
+ * @param $message
+ * @param null $url
+ * @param array $data
+ * @return \think\response\Json
+ */
+function public_json($message, $url = null, $data = [])
+{
+    return json([
+        'code'    => 200,
+        'message' => $message,
+        'url'     => $url,
+        'data'    => $data
+    ]);
+}
+
+/**
+ * 密码简单采用md5加salt加密
+ * @param $password
+ * @return string
+ */
+function get_password($password)
 {
     return md5($password . config('salt'));
 }
