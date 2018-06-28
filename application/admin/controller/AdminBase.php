@@ -4,7 +4,7 @@
 namespace app\admin\controller;
 
 
-use org\Auth;
+use app\admin\org\Auth;
 use think\Controller;
 use think\Db;
 use think\facade\Session;
